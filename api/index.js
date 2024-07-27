@@ -1,9 +1,9 @@
-const express = require('express')
+const express = require('express');
 const cors = require('cors');
 const mongoose = require("mongoose");
 const User = require('./models/User');
 const Post = require('./models/Post');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const app = express();
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
 
-mongoose.connect('mongodb+srv://sunritsingha:kZdHhlXRW6uNytUE@blog.ft9sjym.mongodb.net/?retryWrites=true&w=majority&appName=blog');
+mongoose.connect('mongodb+srv://dhritishree:25Bonny2004.@cluster0.hhtr9rl.mongodb.net/sunrit-blog').then(()=>console.log("DB Connected"));
 
 app.post('/register', async (req,res) => {
   const {username,password} = req.body;
